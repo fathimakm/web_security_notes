@@ -89,9 +89,49 @@ __when a website unintentionally reveals sensitive information to its users.__
 
 *Some basic examples of information disclosure are as follows:*
 
-Revealing the names of hidden directories, their structure, and their contents via a robots.txt file or directory listing
-Providing access to source code files via temporary backups
-Explicitly mentioning database table or column names in error messages
-Unnecessarily exposing highly sensitive information, such as credit card details
+1. Revealing the names of hidden directories, their structure, and their contents via a robots.txt file or directory listing
+2. Providing access to source code files via temporary backups
+3. Explicitly mentioning database table or column names in error messages
+4. Unnecessarily exposing highly sensitive information, such as credit card details
 Hard-coding API keys, IP addresses, database credentials, and so on in the source code
-Hinting at the existence or absence of resources, usernames, and so on via subtle differences in application behavior
+5. Hinting at the existence or absence of resources, usernames, and so on via subtle differences in application behavior
+
+__How to test for information disclosure vulnerabilities__
+*Fuzzing*
+- Burp Intruder can be used for the same
+1. Add payload positions to parameters and use pre-built wordlists of fuzz strings to test a high volume of different inputs in quick succession.
+2. identify differences in responses by comparing HTTP status codes, response times, lengths, and so on.
+3. Use grep matching rules to quickly identify occurrences of keywords, such as error, invalid, SELECT, SQL, and so on
+4. grep extraction rules to extract and compare the content of interesting items within responses.
+
++  Logger++ extension can also be used
+
+ Used to define advanced filters for highlighting interesting entries. This is just one of the many Burp extensions that can help you find any sensitive data that is leaked by the website.
+
+ *Burp Scanner* - used by burpsuite professionals
+ This provides live scanning features for auditing items while you browse, or you can schedule automated scans to crawl and audit the target site on your behalf. Both approaches will automatically flag many information disclosure vulnerabilities for you.
+
+
+ Burp Scanner will alert you if it finds sensitive information such as private keys, email addresses, and credit card numbers in a response. It will also identify any backup files, directory listings, and so on.
+
+
+ *Burp's engagement tools*
+ 1. Search - to look for any expression within the selected item
+  It can fine-tune the results using various advanced search options, such as regex search or negative search.
+  useful for quickly finding occurrences (or absences) of specific keywords of interest.
+
+  2. Find comments
+  can extract any developer comments found in the selected item. It also provides tabs to instantly access the HTTP request/response cycle in which each comment was found.
+
+  3. Discover content
+  used to identify additional content and functionality that is not linked from the website's visible content. This can be useful for finding additional directories and files that won't necessarily appear in the site map automatically.
+
+  *Engineering informative responses*
+
+  - __verbose errors__ are supplied with the name of the unhandled exception and a stack trace showing where the error occurred in the first place, usually accompanied by a line number and file name.
+
+  studying the way error messages change according to your input is useful to manipulate the website to extract arbitrary data via an error message.
+
+   For example, submitting an invalid parameter value might lead to a stack trace or debug response that contains interesting details. You can sometimes cause error messages to disclose the value of your desired data in the response.
+
+   __Common sources of information disclosure__
