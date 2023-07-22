@@ -76,3 +76,22 @@ Double encoding of ../ represents %252E%252E%252F
 1. The application should validate the user input before processing it. Ideally, the validation should compare against a whitelist of permitted values. If that isn't possible for the required functionality, then the validation should verify that the input contains only permitted content, such as purely alphanumeric characters.
 2. After validating the supplied input, the application should append the input to the base directory and use a platform filesystem API to canonicalize the path. It should verify that the canonicalized path starts with the expected base directory.
 *canonicalize- converting data that has more than one possible representation into a "standard" form*
+
+***
+
+## Information Disclosure
+aka information leakage
+__when a website unintentionally reveals sensitive information to its users.__
+
+- Data about other users, such as usernames or financial information
+- Sensitive commercial or business data
+- Technical details about the website and its infrastructure
+
+*Some basic examples of information disclosure are as follows:*
+
+Revealing the names of hidden directories, their structure, and their contents via a robots.txt file or directory listing
+Providing access to source code files via temporary backups
+Explicitly mentioning database table or column names in error messages
+Unnecessarily exposing highly sensitive information, such as credit card details
+Hard-coding API keys, IP addresses, database credentials, and so on in the source code
+Hinting at the existence or absence of resources, usernames, and so on via subtle differences in application behavior
