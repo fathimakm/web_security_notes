@@ -135,3 +135,14 @@ __How to test for information disclosure vulnerabilities__
    For example, submitting an invalid parameter value might lead to a stack trace or debug response that contains interesting details. You can sometimes cause error messages to disclose the value of your desired data in the response.
 
    __Common sources of information disclosure__
+
+   A web crawler, spider, or search engine bot downloads and indexes content from all over the Internet. The goal of such a bot is to learn what (almost) every webpage on the web is about, so that the information can be retrieved when it's needed.
+   example: Amazonbot is an Amazon web crawler for web content identification and backlink discovery.
+   Bingbot for Bing search engine by Microsoft.
+
+1. Files for web crawlers
+   Many websites provide files at /robots.txt and /sitemap.xml to help crawlers navigate their site. Among other things, these files often list specific directories that the crawlers should skip, for example, because they may contain sensitive information.
+
+2. Directory listings
+3. Developer comments
+4. Error Messages
