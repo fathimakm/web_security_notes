@@ -31,7 +31,9 @@ Inject trojan functionality into the web site.
 
 __Content security policy (CSP)__ is a browser mechanism that aims to mitigate the impact of cross-site scripting and some other vulnerabilities. If an application that employs CSP contains XSS-like behavior, then the CSP might hinder or prevent exploitation of the vulnerability. Often, the CSP can be circumvented to enable exploitation of the underlying vulnerability.
 
-__Dangling markup injection__ is a technique that can be used to capture data cross-domain in situations where a full cross-site scripting exploit is not possible, due to input filters or other defenses. It can often be exploited to capture sensitive information that is visible to other users, including CSRF tokens that can be used to perform unauthorized actions on behalf of the user.
+__Dangling markup injection__ It is used to capture data when xss cannot be fully implemented due to security measures.
+
+ It can often be exploited to capture sensitive information that is visible to other users, including CSRF tokens that can be used to perform unauthorized actions on behalf of the user.
 
 
 ## How to prevent XSS attack
@@ -42,3 +44,27 @@ __Dangling markup injection__ is a technique that can be used to capture data cr
 4. __Content Security Policy__. As a last line of defense, you can use Content Security Policy (CSP) to reduce the severity of any XSS vulnerabilities that still occur.
 
 ***
+# Sink
+
+A method or function that causes the malicious javascript to be injected to a page.
+
+# checks
+
+1. check if tags are working >  h1 or if we can push an alert
+2. in stored, try posting a comment
+3. In dom , finf where yo inputs are present using inspect, then think of how to come out of the present tag (document.write)
+    * `input" onload = "alert()` we didn't close it with" bcz it will be included in ""
+4. if location.search is being used, 
+ selct an option Inspect >  > &storeid(the respective according to cases) 
+ `&storeid=life</select><img src ="1" onerror= "alert(1)" >`
+ so in here we purposely makeimg src wrong so that onerror works
+
+5. .innerHTML
+if script is not going thorugh try image tag
+`<img src ="1" onerror= "alert(1)" >`
+
+6. jquery sink
+
+in some websites there will be a backlink, (let's say u navigate to feedback form and u wanna go back to home page, for that there will be a back button on the page, when you inspect, you see an anchor tag `a id = "backlink" href="/"`)
+so we can inject javascript:alert(document.cookie) inplace of / in url
+so if we inspect `a id = "backlink" href="javascript:alert(document.cookie)"`
