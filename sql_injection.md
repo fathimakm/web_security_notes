@@ -13,6 +13,22 @@ __Impact of SQl Vulnerablilty__
 * can escalate a SQL injection attack to compromise the underlying server or other back-end infrastructure, or perform a denial-of-service attack.
 *  SQL injection attack can result in unauthorized access to sensitive data, such as passwords, credit card details, or personal user information (PII). 
 
+### Types of SQL Injection
+
+1. In-Band (classic)
+
+    * Error-based sql Injection: Where you force the database to generate an error giving you more information about how things operate at the back end.
+    * Union based Sql injection : It's a technique that leverages the union operator to combine the result of two queries
+2. Interential(Blind)
+3. Out of Band
+
+
+
+
+
+
+
+
 
 *How to detect SQL Injection vulnerabilities*
 + majority of SQL injection vulnerabilities can be found quickly using Burp Suite's web vulnerability scanner.
