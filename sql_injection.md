@@ -17,10 +17,24 @@ __Impact of SQl Vulnerablilty__
 
 1. In-Band (classic)
 
+when the attacker uses the same communication channel to both launch the attack and gather the result of the attack
+- retrieved data is presented directly in the application web page
+
     * Error-based sql Injection: Where you force the database to generate an error giving you more information about how things operate at the back end.
-    * Union based Sql injection : It's a technique that leverages the union operator to combine the result of two queries
-2. Interential(Blind)
+    * Union based Sql injection : It's a technique that leverages the union operator to combine the result of two queries into a single one.
+    `www.test.com/app.php?id=' UNION SELECT username, password FROM users--`
+    we did'n give id so it's emprt
+    `output:ac1, passw1, adm1, pass2`
+
+2. Interential(Blind) 
+type of vulnerability where there is no acual transfer of data via the web application (the results can't be seen in the application)
+* Boolean:  the results can't be seen in the application, we can only ask the application true or false questions
+* Time: pausing the database for a specefic period of time
+
 3. Out of Band
+
+when the attacker is unable to use the same channel to launch the attack and gather the results of the attack, it usuallly relies on the ability of an application to make a network connection.
+ex: Dns or http request to deliver data to an attacker
 
 
 
