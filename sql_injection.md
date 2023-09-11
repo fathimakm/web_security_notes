@@ -22,6 +22,12 @@ when the attacker uses the same communication channel to both launch the attack 
 
     * Error-based sql Injection: Where you force the database to generate an error giving you more information about how things operate at the back end.
     * Union based Sql injection : It's a technique that leverages the union operator to combine the result of two queries into a single one.
+
+    - the number and order of columns must be the same in all queries, data type must be the same
+    - to determine the column (use ORDER BY, use NULL VALUES)
+
+
+
     `www.test.com/app.php?id=' UNION SELECT username, password FROM users--`
     we did'n give id so it's emprt
     `output:ac1, passw1, adm1, pass2`
@@ -39,16 +45,35 @@ ex: Dns or http request to deliver data to an attacker
 ### How to find a sql vulnerablility in an application
 
 Depends on the perspective of testing
-* Black box testing
-* White box testing 
+* Black box testing : when the tester is given little to no information (usually only given the url of the application and scope of engagement)
+
+* White box testing  : given access to almost everything includig source code.
+
+* grey box: combination of black and white(ex: tester given url and user account details of application) grey box methodology is grouped together with black because of it's limited scope.
+
+### Black Box testing perspective
+1. map the application (visit the url, explore functionailties and so much more)
+2. Fuzz the application (means adding special characters and checking output to see anything unusual)
+    * submit sql specific chracters '    or    ''
+    * once you get an error, try building query using multiple requests 
+    * submit boolen conditions such a OR 1=1 and Or 1=2 and look for differences in the application's responses 
+    * submit payloads designed to trigger time delays when executed within a SQL query, and look for differences in the time taken to respond
+    * submit out of band payloads to trigger an out of band network interaction when used with sql query.
+
+
+### white box testing
+
+* enable web server logging
+* enable database logging
+* map the application
+* code review 
+* test sql vulnerability 
 
 
 
 
 
-
-
-*How to detect SQL Injection vulnerabilities*
+ ## How to detect SQL Injection vulnerabilities
 + majority of SQL injection vulnerabilities can be found quickly using Burp Suite's web vulnerability scanner.
 -  can be detected manually by using a systematic set of tests against every entry point in the application
 1. Submitting the single quote character '
