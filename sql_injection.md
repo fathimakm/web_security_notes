@@ -29,14 +29,18 @@ when the attacker uses the same communication channel to both launch the attack 
 2. Interential(Blind) 
 type of vulnerability where there is no acual transfer of data via the web application (the results can't be seen in the application)
 * Boolean:  the results can't be seen in the application, we can only ask the application true or false questions
-* Time: pausing the database for a specefic period of time
+* Time: pausing the database for a specefic period of time if it waits for the specified time, then it's true(meaning it's vulnerable to time ) . if it doesn't  wait , not true 
 
 3. Out of Band
 
 when the attacker is unable to use the same channel to launch the attack and gather the results of the attack, it usuallly relies on the ability of an application to make a network connection.
 ex: Dns or http request to deliver data to an attacker
 
+### How to find a sql vulnerablility in an application
 
+Depends on the perspective of testing
+* Black box testing
+* White box testing 
 
 
 
