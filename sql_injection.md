@@ -91,9 +91,16 @@ Depends on the perspective of testing
 
 *Most SQL injection vulnerabilities arise within the WHERE clause of a SELECT query.*
 
-+ The most common other locations where SQL injection arises are in Update,  Select, Insert tatements and orderby, where clauses.
++ The most common other locations where SQL injection arises are in Update,  Select, Insert statements and orderby, where clauses.  (mostly within __where__ of a __select__ query)
 
-Some common SQL injection examples include:
++ Some other common locations where SQL injection arises are:
+
+In UPDATE statements, within the updated values or the WHERE clause.
+In INSERT statements, within the inserted values.
+In SELECT statements, within the table or column name.
+In SELECT statements, within the ORDER BY clause.
+
+### Some common SQL injection examples include:
 
 + Retrieving hidden data, where you can modify a SQL query to return additional results.
 - Subverting application logic, where you can change a query to interfere with the application's logic.
@@ -109,7 +116,7 @@ SELECT * FROM products WHERE category = 'Gifts'--' AND released = 1
 __Since 1=1 is always true, the query will return all items.__
 SELECT * FROM products WHERE category = 'Gifts' OR 1=1--' AND released = 1
 
-
+* to expoit sql injection vulnerability, it is necessary to know some information like the type and version of the database software, the tables and columns that the database contains. 
 
 ## Preventing SQL Vulneraberalities
 * use prepared statements (parameterized queries)
