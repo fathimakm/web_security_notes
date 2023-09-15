@@ -20,8 +20,9 @@ __Impact of SQl Vulnerablilty__
 when the attacker uses the same communication channel to both launch the attack and gather the result of the attack
 - retrieved data is presented directly in the application web page
 
-    * Error-based sql Injection: Where you force the database to generate an error giving you more information about how things operate at the back end.
-    * Union based Sql injection : It's a technique that leverages the union operator to combine the result of two queries into a single one.
+    * __Error-based sql Injection__: Where you force the database to generate an error giving you more information about how things operate at the back end.
+
+    * __Union based Sql injection__ : It's a technique that leverages the union operator to combine the result of two queries into a single one.
 
     - the number and order of columns must be the same in all queries, data type must be the same
     - to determine the column (use ORDER BY, use NULL VALUES)
@@ -70,7 +71,7 @@ Depends on the perspective of testing
 * test sql vulnerability 
 
 
-
+### Exploitation Tool: sqlmap
 
 
  ## How to detect SQL Injection vulnerabilities
@@ -103,3 +104,38 @@ SELECT * FROM products WHERE category = 'Gifts'--' AND released = 1
 
 __Since 1=1 is always true, the query will return all items.__
 SELECT * FROM products WHERE category = 'Gifts' OR 1=1--' AND released = 1
+
+
+
+## Preventing SQL Vulneraberalities
+* use prepared statements (parameterized queries)
+
+#### scripting
+* scripting attacks is useful when dealing with pen testing application
+
+
+import requests  //for snding and recieving http requests
+import sys
+import urlib3
+
+proxies = {'http: 'http: 'http://127.0.0.1:8080', 'https': 'https://127.0.0.1:8080}
+
+
+if __name__ == "__main__":
+try:
+     url = sys.argv[1].strip()    //strps away blank space
+     sqli payload = sys.argv[2].strip()
+     
+
+except IndexError:
+
+    print('[-] usage: %s <url> <sql-payload>' % sys.argv[0])
+    print('[-] Example: %s www.example.com "1=1"' % sys.argv[0])
+
+
+    s = requests.Session()  //creating session object
+    if explot_sqli(s, url, sqli_payload):
+    print('sucess')
+
+    else:
+    print('unsuccessful')
