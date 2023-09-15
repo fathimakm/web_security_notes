@@ -43,6 +43,10 @@ type of vulnerability where there is no acual transfer of data via the web appli
 when the attacker is unable to use the same channel to launch the attack and gather the results of the attack, it usuallly relies on the ability of an application to make a network connection.
 ex: Dns or http request to deliver data to an attacker
 
+
+OAST payloads designed t trigger an out of band network interation when executed with sql query.
+
+
 ### How to find a sql vulnerablility in an application
 
 Depends on the perspective of testing
