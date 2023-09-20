@@ -63,6 +63,30 @@ type of vulnerability where there is no acual transfer of data via the web appli
 * Boolean:  the results can't be seen in the application, we can only ask the application true or false questions
 * Time: pausing the database for a specefic period of time if it waits for the specified time, then it's true(meaning it's vulnerable to time ) . if it doesn't  wait , not true 
 
+
+* blind sql injection with conditional responses
+
+confirm the parameter is vulnerable (ex. tracking id, change it and notice the effects)
+
+
+
+lab 11
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 3. Out of Band
 
 when the attacker is unable to use the same channel to launch the attack and gather the results of the attack, it usuallly relies on the ability of an application to make a network connection.
@@ -144,23 +168,24 @@ SELECT * FROM products WHERE category = 'Gifts' OR 1=1-- AND released = 1
 * to expoit sql injection vulnerability, it is necessary to know some information like the type and __version of the database__ software, the tables and columns that the database contains. 
 
 - Microsoft, MySQL	SELECT @@version
-- Oracle	SELECT * FROM v$version
+- Oracle	SELECT banner FROM v$version
 - PostgreSQL	SELECT version()
 `' UNION SELECT @@version--`
 
-__information_schema.tables__
+__information_schema.tables__(PostgreSQL)
 `SELECT table_name, NULL FROM information_schema.tables`
 `SELECT column_name, NULL FROM information_schema.columns WHERE table_name = 'Users'`
+Oracle
+`SELECT * FROM all_tables`
+`SELECT * FROM all_tab_columns WHERE table_name = 'TABLE-NAME-HERE`
 
-
-
-
-
-
-
+search for all tables oracle and you will find the table name 
+>> ``SELECT Table_name FROM all_tables`` if we use this, we will get actual table name in response.
 
 
 - database specific syntax
+
+while using select, sometimes depending on the DB, from is compulsory and if you don't know table name use dual
 `' UNION SELECT NULL FROM DUAL--`
 
 
