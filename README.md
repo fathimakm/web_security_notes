@@ -62,7 +62,7 @@ SELECT * FROM products WHERE category = 'Gifts' OR 1=1--' AND released = 1
 6. ../../../etc/passwd%00.png 
 (If an application requires that the user-supplied filename must end with an expected file extension, such as .png)
 
-*encoding* is the process of putting a sequence of characters (letters, numbers, punctuation, and certain symbols) into a specialized format for efficient transmission or storage. Decoding is the opposite proces
+*encoding* is the process of putting a sequence of characters (letters, numbers, punctuation, and certain symbols) into a specialized format for efficient transmission or storage. Decoding is the opposite process
 The hexadecimal encoding of ../ represents %2E%2E%2F
 Then encoding the % represents %25
 Double encoding of ../ represents %252E%252E%252F
@@ -78,8 +78,31 @@ Double encoding of ../ represents %252E%252E%252F
 *canonicalize- converting data that has more than one possible representation into a "standard" form*
 
 ***
+# Access Control
 
-## Information Disclosure
+__Authentication__ confirms that the user is who they say they are.
+__Session management__ identifies which subsequent HTTP requests are being made by that same user.
+__Access control__ determines whether the user is allowed to carry out the action that they are attempting to perform.
+
+
+### Vertical privilege escalation
+If a user can gain access to functionality that they are not permitted to access then this is vertical privilege escalation.
+
+check robots.txt, Check page source, Check if false condition can be turned true (in burp and using inspect in browser)
+
+### Horizontal privilege escalation
+Horizontal privilege escalation occurs if a user is able to gain access to resources belonging to another user, instead of their own resources of that type.
+
+- globally unique identifiers (GUIDs)
+
+#### Unprotected functionality
+when an application does not enforce any protecting  sensitive functionality.
+__security by obscurity__
+sensitive functionality is concealed by giving it a less predictable URL
+
+
+
+# Information Disclosure
 aka information leakage
 __when a website unintentionally reveals sensitive information to its users.__
 
