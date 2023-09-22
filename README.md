@@ -85,13 +85,33 @@ __Session management__ identifies which subsequent HTTP requests are being made 
 __Access control__ determines whether the user is allowed to carry out the action that they are attempting to perform.
 
 
+
+- check robots.txt, Check page source, Check if false condition can be turned true (in burp and using inspect in browser)
+- try changing user related content like email id and check if any new response occurs. -> like role id , then try changing it and send the request
+
+
+__X-Original-URL and X-Rewrite-URL__
+ non-standard HTTP headers that can be used to override the URL in the original request
+
+
+
+
 ### Vertical privilege escalation
 If a user can gain access to functionality that they are not permitted to access then this is vertical privilege escalation.
 
-check robots.txt, Check page source, Check if false condition can be turned true (in burp and using inspect in browser)
+
+
+
+
+
+
 
 ### Horizontal privilege escalation
 Horizontal privilege escalation occurs if a user is able to gain access to resources belonging to another user, instead of their own resources of that type.
+
+
+
+
 
 - globally unique identifiers (GUIDs)
 
