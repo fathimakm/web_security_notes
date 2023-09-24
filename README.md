@@ -69,6 +69,11 @@ Double encoding of ../ represents %252E%252E%252F
 
 *Decoding some user input twice using the same decoding scheme, once before a security measure and once afterwards, may allow double encoding attacks to bypass that security measure. Thus, to prevent double encoding attacks, all decoding operations on user input should occur before authorization schemes and security filters that intercept user input.*
 
+# DotDotPwn Directory Traversal Fuzzing
+ tool used to detect directory traversal vulnerabilities in web applications and web servers.
+ `dotdotpwn -m http -h 192.168.1.110`  -d is used to specify depth of search
+
+
 ### How to prevent a directory traversal attack
 
 + avoid passing user-supplied input to filesystem APIs altogether.
