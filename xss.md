@@ -63,7 +63,7 @@ A method or function that causes the malicious javascript to be injected to a pa
 if script is not going thorugh try image tag
 `<img src ="1" onerror= "alert(1)" >`
 
-6. jquery sink
+6. jquery sink using location.search
 
 in some websites there will be a backlink, (let's say u navigate to feedback form and u wanna go back to home page, for that there will be a back button on the page, when you inspect, you see an anchor tag `a id = "backlink" href="/"`)
 so we can inject javascript:alert(document.cookie) inplace of / in url
