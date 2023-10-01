@@ -122,7 +122,6 @@ post methd can be changed to another llike get
 ### Vertical privilege escalation
 If a user can gain access to functionality that they are not permitted to access then this is vertical privilege escalation.
 
-
 ### Horizontal privilege escalation
 Horizontal privilege escalation occurs if a user is able to gain access to resources belonging to another user, instead of their own resources of that type.
 
