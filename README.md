@@ -93,8 +93,9 @@ __Access control__ determines whether the user is allowed to carry out the actio
 
 - check robots.txt, Check page source, Check if false condition can be turned true (in burp and using inspect in browser)
 - try changing user related content like email id and check if any new response occurs. -> like role id , then try changing it and send the request
-- try to change id to another user(guid) , try changing names
-
+- try to change user id to another user(guid) , try changing names
+- post method can be chnged to get 
+- som4etimes password will be forwarded in response or masked in front end, it can be viewed in page sourse or proxy
 
 __X-Original-URL and X-Rewrite-URL__
  - non-standard HTTP headers that can be used to override the URL in the original request
@@ -122,20 +123,25 @@ post methd can be changed to another llike get
 If a user can gain access to functionality that they are not permitted to access then this is vertical privilege escalation.
 
 
-
-
-
-
-
-
 ### Horizontal privilege escalation
 Horizontal privilege escalation occurs if a user is able to gain access to resources belonging to another user, instead of their own resources of that type.
 
 
+### IDOR Insecure direct object references
+1. subcategory of access control vulnerabilities
+2. if an application uses user-supplied input to access objects directly and an attacker can modify the input to obtain unauthorized access
+
+`GET /download-transcript/2.txt HTTP/2` 
+`GET /download-transcript/1.txt HTTP/2` we can access object 1 and retrieve information
 
 
+3. IDOR vulnerabilities are most commonly associated with horizontal privilege escalation, but they can also arise in relation to vertical privilege escalation.
 
 - globally unique identifiers (GUIDs)
+
+#### multi-step processes
+implementing important functions over a series of steps when -> variety of inputs or options need to be captured.-> user needs to review and confirm details before the action is performed.
+#### Referer-based access control
 
 #### Unprotected functionality
 when an application does not enforce any protecting  sensitive functionality.
