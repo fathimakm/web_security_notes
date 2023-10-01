@@ -93,12 +93,29 @@ __Access control__ determines whether the user is allowed to carry out the actio
 
 - check robots.txt, Check page source, Check if false condition can be turned true (in burp and using inspect in browser)
 - try changing user related content like email id and check if any new response occurs. -> like role id , then try changing it and send the request
+- try to change id to another user(guid) , try changing names
 
 
 __X-Original-URL and X-Rewrite-URL__
- non-standard HTTP headers that can be used to override the URL in the original request
+ - non-standard HTTP headers that can be used to override the URL in the original request
+
+- X URL header is a non standard HTTP header thet can be used to overwrite the URl in the original request
+
+- X-Original-URL: /doesnotexist  (in  request)
+- if we get a 404 or not found in response -> thsi means application supports this non standard header
+- if validation is done on front end and if the resourse in request gets overwritten -> bypassing access control possible
+
+`GET / HTTP/2`
+`X-Original-Url: /admin`
+-> in response you will get access to admin panel and can find carlos, but you can't view the changes in front end bcz of validation. so all the confirmation done from repeater
+
+`GET /?username=carlos HTTP/2`
+`X-Original-Url: /admin/delete`
+-> since parameters are not accepted in X URL header it will be appended fron the path 
 
 
+__Method-based access control__
+post methd can be changed to another llike get
 
 
 ### Vertical privilege escalation
