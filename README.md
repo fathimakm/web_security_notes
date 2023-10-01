@@ -85,6 +85,8 @@ Double encoding of ../ represents %252E%252E%252F
 ***
 # Access Control
 
+## Burp extension for checking access control vulnerability - Autorize
+
 __Authentication__ confirms that the user is who they say they are.
 __Session management__ identifies which subsequent HTTP requests are being made by that same user.
 __Access control__ determines whether the user is allowed to carry out the action that they are attempting to perform.
@@ -140,7 +142,15 @@ Horizontal privilege escalation occurs if a user is able to gain access to resou
 
 #### multi-step processes
 implementing important functions over a series of steps when -> variety of inputs or options need to be captured.-> user needs to review and confirm details before the action is performed.
+
+if there is only validation on initial steps and not last step, requests can be manipulated - the last request
+
 #### Referer-based access control
+if referer can be manipulated and application depends on referer for validation
+
+#### Location-based access control
+ websites enforce access controls based on the user's geographical location. 
+ ->  by the use of web proxies, VPNs, or manipulation of client-side geolocation mechanisms this can be broken
 
 #### Unprotected functionality
 when an application does not enforce any protecting  sensitive functionality.
