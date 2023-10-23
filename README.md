@@ -153,9 +153,21 @@ if referer can be manipulated and application depends on referer for validation
  ->  by the use of web proxies, VPNs, or manipulation of client-side geolocation mechanisms this can be broken
 
 #### Unprotected functionality
-when an application does not enforce any protecting  sensitive functionality.
+when an application does not enforce any protection for  sensitive functionality.
 __security by obscurity__
 sensitive functionality is concealed by giving it a less predictable URL
+
+## prevention
+1. security checks for all request
+2. except for public resources, deny access by default
+3.  access control checks on client side and server side
+
+
+
+
+# Server-side request forgery (SSRF)
+ allows an attacker to cause the server-side application to make requests to an unintended location.
+
 
 
 
